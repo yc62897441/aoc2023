@@ -48,7 +48,7 @@ async function main() {
         seeds.forEach((seed) => {
             let input = Number(seed)
 
-            // 把輸入轉換成輸出，依照 n 個轉換的 map 來轉換
+            // 把輸入轉換成輸出，依照 n 個 map 來轉換
             arrayNames.forEach((arrayName) => {
                 input = transferToNewInput(arrayName, input)
             })
