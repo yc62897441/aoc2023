@@ -1,6 +1,8 @@
 // 外部引入檔案
 const fs = require('fs')
-const filename = 'input.txt'
+// const filename = 'input.txt'
+const filename = './day5/input.txt'
+
 const table = {
     'seed-to-soil map:': [],
     'soil-to-fertilizer map:': [],
@@ -10,7 +12,15 @@ const table = {
     'temperature-to-humidity map:': [],
     'humidity-to-location map:': [],
 }
-const arrayNames = ['seed-to-soil map:', 'soil-to-fertilizer map:', 'fertilizer-to-water map:', 'water-to-light map:', 'light-to-temperature map:', 'temperature-to-humidity map:', 'humidity-to-location map:']
+const arrayNames = [
+    'seed-to-soil map:',
+    'soil-to-fertilizer map:',
+    'fertilizer-to-water map:',
+    'water-to-light map:',
+    'light-to-temperature map:',
+    'temperature-to-humidity map:',
+    'humidity-to-location map:',
+]
 
 readData()
 async function readData() {
@@ -78,12 +88,18 @@ function getOutput(arrayName, input, range) {
         const mapRange = itemSplit[2] // map 範圍長度
 
         // 如果輸入在範圍內，則直接用輸入換算輸出，不需要考慮 range
-        if (Number(input) >= Number(inputStart) && Number(input) < Number(inputStart) + Number(mapRange)) {
+        if (
+            Number(input) >= Number(inputStart) &&
+            Number(input) < Number(inputStart) + Number(mapRange)
+        ) {
             const possibleNewOutput = Number(outputStart) + (Number(input) - Number(inputStart))
             if (possibleNewOutput < output) output = possibleNewOutput
         }
         // 如果輸入 < inputStart，並且 輸入 + range 在範圍內，則直接用 inputStart 換算輸出，不需要考慮 mapRange，輸出會是 outputStart
-        if (Number(input) < Number(inputStart) && Number(input) + Number(range) >= Number(inputStart)) {
+        if (
+            Number(input) < Number(inputStart) &&
+            Number(input) + Number(range) >= Number(inputStart)
+        ) {
             const possibleNewOutput = Number(outputStart)
             if (possibleNewOutput < output) output = possibleNewOutput
         }
